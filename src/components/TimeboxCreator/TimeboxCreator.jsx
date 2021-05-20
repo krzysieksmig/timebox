@@ -35,7 +35,7 @@ class TimeboxCreator extends React.Component{
             {this.props.isEditing?
                 //czemu dziala po opakowaniu w <> a bez nie ?
                 <>
-                <form onSubmit={this.handleSubmitEdit} ref={this.formRef} className="TimeboxEditor">
+                <form onSubmit={this.handleSubmitEdit} ref={this.formRef} className="TimeboxCreator">
                     <label>Edytuj zadanie <input id="title" type="text" defaultValue={this.props.timeboxEdit.title}/></label>
                     <br/>
                     <label>Edytuj czas <input type="number" min="0" defaultValue={this.props.timeboxEdit.timeValue}/></label>
@@ -44,7 +44,7 @@ class TimeboxCreator extends React.Component{
                 </form>
                 </>
                 :
-                <form onSubmit={this.handleSubmit} ref={this.formRef} className="TimeboxEditor">
+                <form onSubmit={this.handleSubmit} ref={this.formRef} className="TimeboxCreator">
                     <label>Co robisz? <input id="title" type="text" defaultValue=""/></label>
                     <br/>
                     <label>Ile minut? <input type="number" min="0" defaultValue={null}/></label>
