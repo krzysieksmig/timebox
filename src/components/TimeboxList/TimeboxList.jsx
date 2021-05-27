@@ -1,5 +1,5 @@
 import React from 'react';
-import Error from '../Error/Error'
+import ErrorBoundary from '../Error/ErrorBoundary'
 import TimeboxCreator from '../TimeboxCreator/TimeboxCreator';
 import Timebox from '../Timebox/Timebox';
 
@@ -87,7 +87,7 @@ class TimeboxList extends React.Component{
                     isEditing={this.state.isEditing}
                     handleEditing={this.handleEditing}
                     />
-                <Error message="Cos poszlo nie tak w listach :(">
+                <ErrorBoundary message="Cos poszlo nie tak w listach :(">
                     {this.state.timeboxes.map((timebox,index)=>
                     <Timebox
                     isEditing={this.state.isEditing}
@@ -98,10 +98,11 @@ class TimeboxList extends React.Component{
                     handleUpdate={()=>this.handleUpdate(timebox)}
                     />
                     )}
-                </Error>
+                </ErrorBoundary>
             </div>
         )
     }
 }
+
 
 export default TimeboxList;

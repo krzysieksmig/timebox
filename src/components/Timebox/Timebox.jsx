@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function Timebox({title,timeValue,handleRemove,handleUpdate,isEditing}){
     if(timeValue <=0){
@@ -13,5 +14,14 @@ function Timebox({title,timeValue,handleRemove,handleUpdate,isEditing}){
     )
 
 }
+
+Timebox.propTypes = {
+    title: PropTypes.string.isRequired,
+    timeValue: PropTypes.number.isRequired,
+    handleRemove: PropTypes.any.isRequired,
+    handleUpdate: PropTypes.any.isRequired,
+    isEditing: PropTypes.bool.isRequired
+}
+
 
 export default Timebox;
