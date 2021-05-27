@@ -1,4 +1,5 @@
 import React from 'react';
+import Error from '../Error/Error'
 import TimeboxCreator from '../TimeboxCreator/TimeboxCreator';
 import Timebox from '../Timebox/Timebox';
 
@@ -75,26 +76,29 @@ class TimeboxList extends React.Component{
         })
     }
 
+
+
     render(){
         return(
             <div>
-                <TimeboxCreator 
-                handleAdd={this.handleAdd} 
-                timeboxEdit={this.state.timeboxEdit} 
-                isEditing={this.state.isEditing}
-                handleEditing={this.handleEditing}
-                />
-
-                {this.state.timeboxes.map((timebox,index)=>
-                <Timebox
-                isEditing={this.state.isEditing}
-                title={timebox.title} 
-                timeValue={timebox.timeValue} 
-                key={timebox.id}
-                handleRemove={()=>this.handleRemove(index)}
-                handleUpdate={()=>this.handleUpdate(timebox)}
-                />
-                )}
+                    <TimeboxCreator 
+                    handleAdd={this.handleAdd} 
+                    timeboxEdit={this.state.timeboxEdit} 
+                    isEditing={this.state.isEditing}
+                    handleEditing={this.handleEditing}
+                    />
+                <Error message="Cos poszlo nie tak w listach :(">
+                    {this.state.timeboxes.map((timebox,index)=>
+                    <Timebox
+                    isEditing={this.state.isEditing}
+                    title={timebox.title} 
+                    timeValue={timebox.timeValue} 
+                    key={timebox.id}
+                    handleRemove={()=>this.handleRemove(index)}
+                    handleUpdate={()=>this.handleUpdate(timebox)}
+                    />
+                    )}
+                </Error>
             </div>
         )
     }

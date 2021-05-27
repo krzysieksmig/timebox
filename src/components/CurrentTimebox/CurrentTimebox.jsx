@@ -68,10 +68,10 @@ class CurrentTimebox extends React.Component{
                 <h1>{this.props.title}</h1>
                 <Clock minutes={minutesLeft} hours={hoursLeft} seconds={secondsLeft} miliseconds={milisecondsLeft} />
                 <ProgressBar progress = {progressInPrecent}/>
-                <button disabled = {isRunning && !isPaused} onClick={this.props.handleEdit} >Edytuj</button>
-                <button disabled = {isRunning} onClick={this.handleStart} >Start</button>
-                <button disabled = {!isRunning} onClick={this.handleStop}>Stop</button>
-                <button disabled = {!isRunning} onClick={this.handlePause}>{isPaused? `Wznow` : `Pauza`}</button>
+                <button disabled = {(isRunning && !isPaused) || this.props.isActive} onClick={this.props.handleEdit} >Edytuj</button>
+                <button disabled = {isRunning || this.props.isActive} onClick={this.handleStart} >Start</button>
+                <button disabled = {!isRunning || this.props.isActive} onClick={this.handleStop}>Stop</button>
+                <button disabled = {!isRunning || this.props.isActive} onClick={this.handlePause}>{isPaused? `Wznow` : `Pauza`}</button>
                 Liczba przerw: {pausesCount}
             </div>
         )

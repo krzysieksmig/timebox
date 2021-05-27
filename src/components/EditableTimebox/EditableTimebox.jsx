@@ -32,7 +32,7 @@ class EditableTimebox extends React.Component{
 
     render(){
         return(
-        <>
+        <React.StrictMode>
         <TimeboxList/>
         <TimeboxEditor 
             handleActive={this.handleActive} 
@@ -48,7 +48,7 @@ class EditableTimebox extends React.Component{
             title={this.state.title} 
             timeValue={this.state.timeValue}
         />
-        </>
+        </React.StrictMode>
         )
     }
 }
