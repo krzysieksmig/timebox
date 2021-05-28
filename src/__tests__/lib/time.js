@@ -1,4 +1,6 @@
-import convertSecondsToTimer from '../../lib/time'
+import convertSecondsToTimer from '../../lib/time';
+
+
 describe("convertSecondsToTimer", ()=>{
     test('returns 30 seconds for 30 seconds', ()=>{
         expect(
