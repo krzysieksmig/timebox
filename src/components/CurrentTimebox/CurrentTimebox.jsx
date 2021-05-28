@@ -1,6 +1,7 @@
 import React from 'react';
 import Clock from '../Clock/Clock';
 import ProgressBar from '../ProgressBar/ProgressBar';
+import convertSecondsToTimer from '../../lib/time'
 
 class CurrentTimebox extends React.Component{
     constructor(props){
@@ -56,17 +57,14 @@ class CurrentTimebox extends React.Component{
 
     render() {
         const {isRunning , isPaused , pausesCount, elapsedTimeInSeconds} = this.state
-        const totalTimeInSeconds = this.props.timeValue;
+        const totalTimeInSeconds = this.props.timeValue * 60;
         const timeLeftInSeconds = totalTimeInSeconds - elapsedTimeInSeconds;
-        const hoursLeft = Math.floor(timeLeftInSeconds/60/60)
-        const minutesLeft = Math.floor(timeLeftInSeconds/60);
-        const secondsLeft = Math.floor(timeLeftInSeconds%60);
-        const milisecondsLeft = ((timeLeftInSeconds%1).toFixed(3))*10;
+        const [hoursLeft, minutesLeft, secondsLeft, milisecondsLeft] = convertSecondsToTimer(timeLeftInSeconds)
         const progressInPrecent = (elapsedTimeInSeconds / totalTimeInSeconds) * 100.0;
         return (
             <div className={`CurrentTimebox ${this.props.isActive? "inactive" :""}`}>
                 <h1>{this.props.title}</h1>
-                <Clock minutes={minutesLeft} hours={hoursLeft} seconds={secondsLeft} miliseconds={milisecondsLeft} />
+                <Clock hours={hoursLeft} minutes={minutesLeft} seconds={secondsLeft} miliseconds={milisecondsLeft} />
                 <ProgressBar progress = {progressInPrecent}/>
                 <button disabled = {(isRunning && !isPaused) || this.props.isActive} onClick={this.props.handleEdit} >Edytuj</button>
                 <button disabled = {isRunning || this.props.isActive} onClick={this.handleStart} >Start</button>
